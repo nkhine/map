@@ -100,7 +100,7 @@ function drawCountry(data) {
 		
 		var region_area = document.getElementById(regions[region].shortName);
 		var regioninfo = $("<div id='"+regions[region].shortName+obj.id+"' style='display:none;'><p style='font-size:15px;'>Region Name:"+regions[region].name+"</p></div>");
-		var countryflag = $("<img src='flags/"+regions[region].country+".png' alt='There is no flag.' />"); regioninfo.append(countryflag);
+		var countryflag = $("<img src='/flags/"+regions[region].country+".png' alt='There is no flag.' />"); regioninfo.append(countryflag);
 		var totalmembers = $("<p>Total members:"+regions[region].total_members+"</p>"); regioninfo.append(totalmembers);
 		regioninfo.appendTo(region_area);
 				
