@@ -23,20 +23,21 @@ height:820px;
 .point {
 position:absolute;
 display:none;
-padding:10px 15px;
-background:#7BB9F0;
+padding:0px 0px;
 font-size:14px;
 font-weight:bold;
 -moz-border-radius:8px;
+height:55px;
+width:70px;
 }
 
 .point .close {
 display:block;
 position:absolute;
-top:-10px;
-right:-10px;
-width:24px;
-height:24px;
+top:1px;
+right:5px;
+width:64px;
+height:64px;
 text-indent:-9999px;
 outline:none;
 background:url(../img/close.png) no-repeat;
@@ -51,3 +52,22 @@ a img {
 border:none;
 }
 
+.countryinfo {
+    display: none;
+    height: 400px;
+    overflow: auto;
+    position: absolute;
+    left: 1000px;
+    top: 50px;
+    width: 300px;
+}
+
+.regioninfo {
+    display: none;
+    height: 400px;
+    overflow: auto;
+    position: absolute;
+    left: 600px;
+    top: 50px;
+    width: 300px;
+}
