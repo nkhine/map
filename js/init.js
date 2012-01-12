@@ -42,23 +42,20 @@ function drawMap(paths) {
 			document.getElementById(this.id).style.display = "none";
 
 		}).click(function(){
-			
-			var data = 'js/'+arr[this.id]+'/paths.js';
-			var target = paths[arr[this.id]].name;
-			
 			document.getElementById("countryinfo").style.display = "none";
 			document.getElementById(this.id).style.display = "none";
 			$.ajax({
 				url: 'js/'+arr[this.id]+'/paths.js',
 				method:'get',
 				dataType:'script',
+				jsonp:'jsonp_callback',
 				success:function(data){
 					$("#map").empty();
 					drawCountry(data);
 					$(".point").css("display", "block");
 				},
 				error:function(){
-					alert("There is no "+ target +" region data in " + data + "!");
+					alert("There is no region data!");
 				}
 			});
 		});
@@ -100,7 +97,7 @@ function drawCountry(data) {
 		
 		var region_area = document.getElementById(regions[region].shortName);
 		var regioninfo = $("<div id='"+regions[region].shortName+obj.id+"' style='display:none;'><p style='font-size:15px;'>Region Name:"+regions[region].name+"</p></div>");
-		var countryflag = $("<img src='/flags/"+regions[region].country+".png' alt='There is no flag.' />"); regioninfo.append(countryflag);
+		var countryflag = $("<img src='flags/"+regions[region].country+".png' alt='There is no flag.' />"); regioninfo.append(countryflag);
 		var totalmembers = $("<p>Total members:"+regions[region].total_members+"</p>"); regioninfo.append(totalmembers);
 		regioninfo.appendTo(region_area);
 				
@@ -117,20 +114,17 @@ function drawCountry(data) {
 			document.getElementById(regions[region].shortName).style.display = "none";
 			document.getElementById(regions[region].shortName+this.id).style.display = "none";			
 		}).click(function(){
-			
-			var data = 'js/'+regions[region].shortName+'/'+arr[this.id]+'/paths.js';
-			var target = regions[arr[this.id]].name;
-			
-			document.getElementById(regions[region].shortName).style.display = "none";
-			document.getElementById(regions[region].shortName+this.id).style.display = "none";				
 			$.ajax({
-				url: 'js/'+regions[region].shortName+'/'+arr[this.id]+'/paths.js',
+				url: 'js/'+arr[this.id]+'/paths.js',
 				method:'get',
 				dataType:'script',
+				jsonp:'jsonp_callback',
 				success:function(data){
+					document.getElementById(regions[region].shortName).style.display = "none";
+					document.getElementById(regions[region].shortName+this.id).style.display = "none";	
 				},
 				error:function(){
-					alert("There is no "+ target +" county data in " + data + "!");
+					alert("There is no county data!");
 				}
 			});
 		});
