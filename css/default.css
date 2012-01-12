@@ -24,12 +24,11 @@ height:820px;
 position:absolute;
 display:none;
 padding:0px 0px;
-background:#7BB9F0;
 font-size:14px;
 font-weight:bold;
 -moz-border-radius:8px;
-height:25px;
-width:35px;
+height:55px;
+width:70px;
 }
 
 .point .close {
@@ -37,8 +36,8 @@ display:block;
 position:absolute;
 top:1px;
 right:5px;
-width:24px;
-height:24px;
+width:64px;
+height:64px;
 text-indent:-9999px;
 outline:none;
 background:url(../img/close.png) no-repeat;
@@ -54,13 +53,14 @@ border:none;
 }
 
 .countryinfo {
+		border:1px solid #000;
     display: none;
-    height: 400px;
     overflow: auto;
     position: absolute;
-    left: 1000px;
-    top: 50px;
-    width: 300px;
+    height: auto;    
+    width: 200px;
+    -moz-border-radius:8px;
+    cursor:pointer
 }
 
 .regioninfo {
@@ -71,4 +71,5 @@ border:none;
     left: 600px;
     top: 50px;
     width: 300px;
+    cursor:pointer
 }
