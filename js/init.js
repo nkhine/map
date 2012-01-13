@@ -1,5 +1,5 @@
 function drawMap(paths) {
-	var r = Raphael('map', 800, 600);
+	var r = Raphael('map', 1000, 800);
 	attributes = {
             fill: '#fff',
             stroke: '#3899E6',
@@ -10,7 +10,7 @@ function drawMap(paths) {
 	console.log(paths);
 
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:800px; top:0px; display:none'><div class='close'></div></div>");
+	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
 	$("#map").append(point);
 
 	function exapandCountry(id, shortName) {
@@ -55,7 +55,7 @@ function drawMap(paths) {
 			$(".country").css({"display": "none"});
 
 			this.animate({
-			    fill: '#1669AD'
+				fill: '#1669AD'
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
@@ -95,7 +95,7 @@ function drawMap(paths) {
 }
 
 function drawCountry(data) {
-	var r = Raphael('map', 800, 600);
+	var r = Raphael('map', 1000, 800);
 	attributes = {
             fill: '#fff',
             stroke: '#3899E6',
@@ -105,7 +105,7 @@ function drawCountry(data) {
 	var arr = new Array();
 	
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:800px; top:0px; display:none'><div class='close'></div></div>");
+	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
 	$("#map").append(point);
 	
 	for (var region in regions) {
