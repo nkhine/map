@@ -9,15 +9,98 @@ font-size:11px;
 
 .wrapper {
 margin:0 auto;
-width:1200px;
+width:1000px;
 position:relative;
 }
 
-#map {
+
+#cont_txt {
+
+font-size: 22px;
+width:170px;
+height:75px;
+}
+
+#world_map {
+border:1px solid #000;
 float:left;
 clear:both;
-width:1200px;
-height:820px;
+width:600px;
+height:420px;
+}
+#world_map .plus {
+	
+	margin-top: -385px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/plus.gif) no-repeat;
+	opacity:0.9;
+	}
+	
+#world_map .minus {
+
+	margin-top:3px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/minus.gif) no-repeat;
+	opacity:0.9;
+	}
+	
+#contenient_map .plus {
+	margin-top: -195px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/plus.gif) no-repeat;
+	opacity:0.9;
+	}
+	
+#contenient_map .minus {
+	margin-top:3px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/minus.gif) no-repeat;
+	opacity:0.9;
+	}
+
+#country_map .plus {
+	margin-top: -195px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/plus.gif) no-repeat;
+	opacity:0.9;
+	}
+	
+#country_map .minus {
+	margin-top:3px;
+	margin-left: 15px;
+	width:16px;
+	height:16px;
+	background:url(../img/minus.gif) no-repeat;
+	opacity:0.9;
+	}
+
+#contenient_map {
+border:1px solid #000;
+clear:both;
+width:300px;
+height:200px;
+display: inline-block;
+margin-left: 20px;
+
+}
+#country_map {
+border:1px solid #000;
+clear:both;
+width:300px;
+height:200px;
+display: inline-block;
+margin-left: 20px;
+margin-top: 4px;
 }
 
 .point {
@@ -53,7 +136,7 @@ border:none;
 }
 
 .countryinfo {
-	border:1px solid #000;
+		border:1px solid #000;
     display: none;
     overflow: auto;
     position: absolute;
@@ -72,4 +155,10 @@ border:none;
     width: 200px;
     -moz-border-radius:8px;	
     cursor:pointer
+}
+
+.city_attr {
+	fill: "#0f0";
+	stroke: "none";
+opacity: .6
 }
