@@ -34,6 +34,8 @@ function drawMap(paths) {
 	
 	var r = Raphael('world_map', mapWidth, mapHeight);
  	r.canvas.setAttribute("viewBox", firstX+" " + firstY + " 980 300");
+ //	r.canvas.setAttribute("stroke-width",0);
+
  	r.draggable.enable();	
   var set = r.set();
   
@@ -84,8 +86,8 @@ minIcon.click(function(e) {
         };	
 	var arr = new Array();
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
-	$("#world_map").append(point);
+//	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
+//	$("#world_map").append(point);
 	
 	var box_arr_cx = new Array();
 	var box_arr_cy = new Array();
@@ -93,6 +95,7 @@ minIcon.click(function(e) {
 	var box_arr_attr = new Array();
 	for (var country in paths) {
 		var obj = r.path(paths[country].path);
+
   	obj.draggable.enable();
 		bbox = obj.getBBox();
 		set.push(obj);
@@ -102,27 +105,27 @@ minIcon.click(function(e) {
 			box_arr_cx[country] = bbox.x + bbox.width/2;;
 			box_arr_cy[country] = bbox.y + bbox.height/2;;
 			if(paths[country].total_members < 100){
-				box_arr_radius[country] = 5;
+				box_arr_radius[country] = 2;
 				box_arr_attr[country] = city_attr_fir;
 			}
 			else if(paths[country].total_members < 500)
 			{
-				  box_arr_radius[country] = 7;
+				  box_arr_radius[country] = 4;
 				  box_arr_attr[country] = city_attr_sec;
 				}
 			else if(paths[country].total_members < 1000)
 				{
-				  box_arr_radius[country] = 9;	
+				  box_arr_radius[country] = 6;	
 				  box_arr_attr[country] = city_attr_thi;
 				}
 			else if(paths[country].total_members < 2000)
 				{
-				  box_arr_radius[country] = 11;
+				  box_arr_radius[country] = 8;
 				  box_arr_attr[country] = city_attr_for;
 				}
 			else 
 				{
-					box_arr_radius[country] = 13;
+					box_arr_radius[country] = 10;
 					box_arr_attr[country] = city_attr_fiv;		
 				}    
 		}
@@ -137,22 +140,37 @@ minIcon.click(function(e) {
 		var region = $("<div id='"+country+"' class='regioninfo' style='display:none;'></div>");
 		info.after(region);
 
+		
+		// test
+		
+		countryinfo.find('p').eq(0).hover(function(e){
+			$(this).parent().parent().eq(0).css({"background": "#d3d2d1", "opacity": .9});
+		},function(){
+			$(this).parent().parent().eq(0).css({"background":""});
+			}).click(function(){
+				var temp_id = $(this).parent().eq(0).attr('id');
+				exapandContenient(temp_id, arr[temp_id]);			
+		});
+		//
+
 		obj.hover(function(e){
 
 			$("#countryinfo").css({"display": "none"});
 			$(".country").css({"display": "none"});
+			$('svg').find('rect').remove();
 
 			this.animate({
 				fill: '#1669AD'
-			}, 300);
+			}, 200);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-80});
+			$("#countryinfo").css({"margin-top": e.pageY-90});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
 			var id = this.id; var name = arr[this.id];
-			
+			r.canvas.setAttribute("stroke-width",0);
+
 			$(".closeinfo").click(function() { 
 				$("#countryinfo").css({"display":"none"});
 				$("#"+this.id).css({"display":"none"});			
@@ -161,19 +179,21 @@ minIcon.click(function(e) {
 			this.animate({
 				fill: attributes.fill
 			}, 300);
+			r.canvas.setAttribute("stroke-width",0);
+
 		}).click(function(){
 			exapandContenient(this.id, arr[this.id]);			
 		});
 		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-			parent = t.parent('.point');
-			parent.fadeOut(function(){
-				parent.remove();
-			});
-
-			return false;
-		});	
+//		$('.point').find('.close').live('click', function(){
+//			var t = $(this),
+//			parent = t.parent('.point');
+//			parent.fadeOut(function(){
+//				parent.remove();
+//			});
+//
+//			return false;
+//		});	
 	}
 		var circle_arr = new Array();
 	for (var country in paths) {
@@ -196,7 +216,7 @@ minIcon.click(function(e) {
 				$("#countryinfo").css({"margin-top": e.pageY-80});
 				$("#countryinfo").css({"display": "block"});
 				$("#"+this.id).css({"display": "block"});
-	
+	r.canvas.setAttribute("stroke-width",0);
 				var id = this.id; var name = circle_arr[this.id];
 				//$("#" + this.id + " .flag").click( function(){ exapandCountry(id, name); });
 				
@@ -209,7 +229,7 @@ minIcon.click(function(e) {
 }
 
 ///////  continient draw
-function drawContinient(data,cont_target) {
+function drawContinient(data,cont_target, id) {
 	$("#world_map").find('svg').remove();
 	//drawing continent map
 	$('#contenient_map').show();
@@ -301,8 +321,8 @@ function drawContinient(data,cont_target) {
 	var arr = new Array();
 	
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
-	$("#country_map").append(point);
+//	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
+//	$("#country_map").append(point);
 	
 		var city_attr = {
 					fill: "#0f0",
@@ -358,6 +378,15 @@ function drawContinient(data,cont_target) {
 			
 		var region = $("<div id='"+country+"' class='regioninfo' style='display:none;'></div>");
 		info.after(region);
+		
+		countryinfo.find('p').eq(0).hover(function(e){
+			$(this).parent().parent().eq(0).css({"background": "#d3d2d1", "opacity": .9});
+		},function(){
+			$(this).parent().parent().eq(0).css({"background":""});
+			}).click(function(){
+				var temp_id = $(this).parent().eq(0).attr('id');
+				exapandCountry(temp_id, arr[temp_id]);			
+		});
 
 		obj.hover(function(e){
 
@@ -369,7 +398,7 @@ function drawContinient(data,cont_target) {
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-280});
+			$("#countryinfo").css({"margin-top": e.pageY-290});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -388,16 +417,16 @@ function drawContinient(data,cont_target) {
 		});
 		
 		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-			parent = t.parent('.point');
-			parent.fadeOut(function(){
-				parent.remove();
-			});
-			//drawMap(paths);
-			return false;
-			
-		});	
+//		$('.point').find('.close').live('click', function(){
+//			var t = $(this),
+//			parent = t.parent('.point');
+//			parent.fadeOut(function(){
+//				parent.remove();
+//			});
+//			//drawMap(paths);
+//			return false;
+//			
+//		});	
 	}
 	var circle_arr = new Array();
 		for (var country in paths) {
@@ -419,7 +448,7 @@ function drawContinient(data,cont_target) {
 
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-280});
+			$("#countryinfo").css({"margin-top": e.pageY-290});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -432,6 +461,10 @@ function drawContinient(data,cont_target) {
 			exapandCountry(this.id, circle_arr[this.id]);			
 		});
 		}
+	
+	
+	$("#countryinfo").css({"display":"block", "margin-top":100, "margin-left":224});
+	$("#"+id).css({"display":"block"});		
 	
 //drawing world map	in contenient_map
 	$("#contenient_map").find('svg').remove();
@@ -493,27 +526,27 @@ function drawContinient(data,cont_target) {
 				box_arr_cx[country] = bbox.x + bbox.width/2;;
 				box_arr_cy[country] = bbox.y + bbox.height/2;;
 				if(paths[country].total_members < 100){
-				box_arr_radius[country] = 5;
+				box_arr_radius[country] = 3;
 				box_arr_attr[country] = city_attr_fir;
 			}
 			else if(paths[country].total_members < 500)
 			{
-				  box_arr_radius[country] = 10;
+				  box_arr_radius[country] = 6;
 				  box_arr_attr[country] = city_attr_sec;
 				}
 			else if(paths[country].total_members < 1000)
 				{
-				  box_arr_radius[country] = 15;	
+				  box_arr_radius[country] = 9;	
 				  box_arr_attr[country] = city_attr_thi;
 				}
 			else if(paths[country].total_members < 2000)
 				{
-				  box_arr_radius[country] = 20;
+				  box_arr_radius[country] = 12;
 				  box_arr_attr[country] = city_attr_for;
 				}
 			else 
 				{
-					box_arr_radius[country] = 25;
+					box_arr_radius[country] = 15;
 					box_arr_attr[country] = city_attr_fiv;		
 				}    	    
 			}
@@ -527,6 +560,15 @@ function drawContinient(data,cont_target) {
 				
 			var region = $("<div id='"+country+"' class='regioninfo' style='display:none;'></div>");
 			info.after(region);
+			
+		countryinfo.find('p').eq(0).hover(function(e){
+			$(this).parent().parent().eq(0).css({"background": "#d3d2d1", "opacity": .9});
+		},function(){
+			$(this).parent().parent().eq(0).css({"background":""});
+			}).click(function(){
+				var temp_id = $(this).parent().eq(0).attr('id');
+				exapandContenient(temp_id, arr[temp_id]);			
+		});
 
 			obj.hover(function(e){
 	
@@ -538,7 +580,7 @@ function drawContinient(data,cont_target) {
 				}, 300);
 				
 				$("#countryinfo").css({"margin-left": e.pageX-10});
-				$("#countryinfo").css({"margin-top": e.pageY-280});
+				$("#countryinfo").css({"margin-top": e.pageY-290});
 				$("#countryinfo").css({"display": "block"});
 				$("#"+this.id).css({"display": "block"});
 	
@@ -557,17 +599,17 @@ function drawContinient(data,cont_target) {
 			});
 		
 		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-			parent = t.parent('.point');
-			parent.fadeOut(function(){
-				parent.remove();
-			});
-			
-			drawMap(paths);
-			return false;
-			
-		});	
+//		$('.point').find('.close').live('click', function(){
+//			var t = $(this),
+//			parent = t.parent('.point');
+//			parent.fadeOut(function(){
+//				parent.remove();
+//			});
+//			
+//			drawMap(paths);
+//			return false;
+//			
+//		});	
 	}
 		var circle_arr = new Array();
 		for (var country in paths) {
@@ -589,7 +631,7 @@ function drawContinient(data,cont_target) {
 
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-280});
+			$("#countryinfo").css({"margin-top": e.pageY-290});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -604,7 +646,9 @@ function drawContinient(data,cont_target) {
 		}
 }
 
-function drawCountry(data, cont_target,target,shortName) {
+function drawCountry(data, cont_target,target,shortName, id) {
+	
+	
 	$("#country_map").find('svg').remove();
 // drawing worldmap in country_map
 	$("#country_map").show();
@@ -656,8 +700,8 @@ function drawCountry(data, cont_target,target,shortName) {
 	var arr_world = new Array();
 	
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
-	$("#country_map").append(point);
+//	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
+//	$("#country_map").append(point);
 	
 	var city_attr = {
 					fill: "#0f0",
@@ -716,7 +760,16 @@ function drawCountry(data, cont_target,target,shortName) {
 			
 		var region = $("<div id='"+country+"' class='regioninfo' style='display:none;'></div>");
 		info.after(region);
-
+		
+		countryinfo.find('p').eq(0).hover(function(e){
+			$(this).parent().parent().eq(0).css({"background": "#d3d2d1", "opacity": .9});
+		},function(){
+			$(this).parent().parent().eq(0).css({"background":""});
+			}).click(function(){
+				var temp_id = $(this).parent().eq(0).attr('id');
+				exapandContenient(temp_id, arr_world[temp_id]);			
+		});
+		
 		obj.hover(function(e){
 			$(".regioninfo").css({ "display": "none" });
 			$(".region").css({ "display": "none" });		
@@ -727,7 +780,7 @@ function drawCountry(data, cont_target,target,shortName) {
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-490});
+			$("#countryinfo").css({"margin-top": e.pageY-495});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -747,17 +800,17 @@ function drawCountry(data, cont_target,target,shortName) {
 			exapandContenient(this.id, arr_world[this.id]);			
 		});
 		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-			parent = t.parent('.point');
-			parent.fadeOut(function(){
-				parent.remove();
-			});
-			
-		//	drawMap(paths);
-			return false;
-			
-		});	
+//		$('.point').find('.close').live('click', function(){
+//			var t = $(this),
+//			parent = t.parent('.point');
+//			parent.fadeOut(function(){
+//				parent.remove();
+//			});
+//			
+//		//	drawMap(paths);
+//			return false;
+//			
+//		});	
 	}
 	var circle_arr = new Array();
 	for (var country in paths) {
@@ -777,7 +830,7 @@ function drawCountry(data, cont_target,target,shortName) {
 		circle_world.hover(function(e){$("#countryinfo").css({"display": "none"});
 			$(".country").css({"display": "none"});
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-490});
+			$("#countryinfo").css({"margin-top": e.pageY-495});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -883,8 +936,8 @@ function drawCountry(data, cont_target,target,shortName) {
 	var arr_country = new Array();
 	
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
-	$("#country_map").append(point);
+//	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
+//	$("#country_map").append(point);
 		
 		for (var country in paths) {
 		var obj = r_contenient.path(paths[country].path);
@@ -900,7 +953,16 @@ function drawCountry(data, cont_target,target,shortName) {
 			
 		var region = $("<div id='"+country+"' class='regioninfo' style='display:none;'></div>");
 		info.after(region);
-
+		
+		countryinfo.find('p').eq(0).hover(function(e){
+			$(this).parent().parent().eq(0).css({"background": "#d3d2d1", "opacity": .9});
+		},function(){
+			$(this).parent().parent().eq(0).css({"background":""});
+			}).click(function(){
+				var temp_id = $(this).parent().eq(0).attr('id');
+				exapandCountry(temp_id, arr_country[temp_id]);			
+		});
+		
 		obj.hover(function(e){
 			$(".regioninfo").css({ "display": "none" });
 			$(".region").css({ "display": "none" });		
@@ -912,7 +974,7 @@ function drawCountry(data, cont_target,target,shortName) {
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-490});
+			$("#countryinfo").css({"margin-top": e.pageY-495});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -930,17 +992,17 @@ function drawCountry(data, cont_target,target,shortName) {
 			exapandCountry(this.id, arr_country[this.id]);			
 		});
 		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-			parent = t.parent('.point');
-			parent.fadeOut(function(){
-				parent.remove();
-			});
-			
-			//drawMap(paths);
-			return false;
-			
-		});	
+//		$('.point').find('.close').live('click', function(){
+//			var t = $(this),
+//			parent = t.parent('.point');
+//			parent.fadeOut(function(){
+//				parent.remove();
+//			});
+//			
+//			//drawMap(paths);
+//			return false;
+//			
+//		});	
 	}
 	var circle_arr = new Array();
 	for (var country in paths) {
@@ -960,7 +1022,7 @@ function drawCountry(data, cont_target,target,shortName) {
 		circle_contenient.hover(function(e){$("#countryinfo").css({"display": "none"});
 			$(".country").css({"display": "none"});
 			$("#countryinfo").css({"margin-left": e.pageX-10});
-			$("#countryinfo").css({"margin-top": e.pageY-490});
+			$("#countryinfo").css({"margin-top": e.pageY-495});
 			$("#countryinfo").css({"display": "block"});
 			$("#"+this.id).css({"display": "block"});
 
@@ -1034,8 +1096,8 @@ function drawCountry(data, cont_target,target,shortName) {
 	var arr = new Array();
 	
 	var info = $(".countryinfo");
-	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
-	$("#country_map").append(point);
+//	var point = $("<div class='point' style='position:absolute; left:1000px; top:0px; display:none'><div class='close'></div></div>");
+//	$("#country_map").append(point);
 	
 	for (var region in regions) {
 		var obj = r_country.path(regions[region].path);
@@ -1080,6 +1142,8 @@ function drawCountry(data, cont_target,target,shortName) {
 		var countryflag = $("<img src='flags/"+regions[region].country+".png' alt='There is no flag.' />"); regioninfo.append(countryflag);
 		var totalmembers = $("<p>Total members:"+regions[region].total_members+"</p>"); regioninfo.append(totalmembers);
 		regioninfo.appendTo(region_area);
+		
+		
 				
 		obj.hover(function(e){
 			$(".regioninfo").css({ "display": "none" });
@@ -1091,7 +1155,7 @@ function drawCountry(data, cont_target,target,shortName) {
 			}, 300);
 			
 			$("#" + regions[region].shortName).css({"margin-left": e.pageX-10});
-			$("#" + regions[region].shortName).css({"margin-top": e.pageY-490});
+			$("#" + regions[region].shortName).css({"margin-top": e.pageY-495});
 			
 			$("#" + regions[region].shortName).css({"display":"block"});
 			$("#" + regions[region].shortName+this.id).css({"display":"block"});
@@ -1127,7 +1191,7 @@ function drawCountry(data, cont_target,target,shortName) {
 			$(".countryinfo").css({ "display": "none" });		
 					
 			$("#" + regions[region].shortName).css({"margin-left": e.pageX-10});
-			$("#" + regions[region].shortName).css({"margin-top": e.pageY-490});
+			$("#" + regions[region].shortName).css({"margin-top": e.pageY-495});
 			
 			$("#" + regions[region].shortName).css({"display":"block"});
 			$("#" + regions[region].shortName+this.id).css({"display":"block"});
@@ -1142,7 +1206,10 @@ function drawCountry(data, cont_target,target,shortName) {
 		}
 
 		firstX_country= (3.5*country_bbox_width[shortName]-mapWidth_country)/2+40;
-	     	r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+3.5*country_bbox_width[shortName]+" "+ 3*country_bbox_height[shortName]);
+	  r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+3.5*country_bbox_width[shortName]+" "+ 3*country_bbox_height[shortName]);
+	  //alert(target);
+	  $("#countryinfo").css({"display":"block", "margin-top":-100, "margin-left":224});
+		$("#"+id).css({"display":"block"});		
 
 }
 
@@ -1153,12 +1220,12 @@ function exapandContenient(id, shortName) {
 		document.getElementById("countryinfo").style.display = "none";
 		document.getElementById(id).style.display = "none";
 		$.ajax({
-//			URL: 'js/'+shortName+'/paths.js',
+			URL: 'js/'+shortName+'/paths.js',
 			method:'get',
 			dataType:'script',
 			success:function(data){
-				drawContinient(data, cont_target);
-				$(".point").css("display", "block");
+				drawContinient(data, cont_target, id);
+//				$(".point").css("display", "block");
 			},
 			error:function(){
 				alert("There is no "+ cont_target +" region data in " + data + "!");
@@ -1179,8 +1246,8 @@ function exapandCountry(id, shortName) {
 			method:'get',
 			dataType:'script',
 			success:function(data){
-				drawCountry(data,cont_target,target,shortName);
-				$(".point").css("display", "block");
+				drawCountry(data,cont_target,target,shortName, id);
+//				$(".point").css("display", "block");
 			},
 			error:function(){
 				alert("There is no "+ target +" region data in " + data + "!");
