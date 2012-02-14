@@ -2565,6 +2565,7 @@ Raphael = (function () {
             this._drag.x = e.clientX;
             this._drag.y = e.clientY;
             this._drag.id = e.identifier;
+            //this.css({'cursor','hand'});
             onstart && onstart.call(this, e.clientX, e.clientY);
             Raphael.mousemove(move).mouseup(up);
         }),

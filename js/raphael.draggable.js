@@ -123,7 +123,7 @@
       paper.draggable.current(element.draggable.parent || element);
       lastDragX = event.clientX;
       lastDragY = event.clientY;
-      
+     
       startDragger();
     });
     
