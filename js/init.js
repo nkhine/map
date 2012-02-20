@@ -49,12 +49,12 @@ function drawMap(paths) {
 
   var maxIcon = $('.plus');
   var minIcon = $('.minus');
-  var zoomInterval = 30;
+  
   var mapRate = firstSetHeight/firstSetWidth;
- 
+  var zoomInterval = 30;
   maxIcon.click(function(e) {
-   
- 	mapZoom=mapZoom + 0.2;
+  
+ 	mapZoom=mapZoom + 0.1;
     firstX = firstX + mapZoom *zoomInterval;
     firstY = firstY + mapZoom *zoomInterval*mapRate ;
     firstSetWidth = firstSetWidth - 2*mapZoom*zoomInterval;
@@ -193,7 +193,9 @@ minIcon.click(function(e) {
 
 ///////  continient draw
 function drawContinient(data,cont_target, id) {
-	$("#world_map").find('svg').remove();
+	$("#world_map").children().remove();
+	$("#world_map").append('<div class="plus"></div>');
+	$("#world_map").append('<div class="minus"></div>');
 	//drawing continent map
 	$('#contenient_map').show();
 
@@ -205,77 +207,78 @@ function drawContinient(data,cont_target, id) {
 	var firstSetWidth = 0 ;
 	var firstSetHeight= 0;
 
-  var maxIcon = $('#world_map .plus');
-  var minIcon = $('#world_map .minus');
+  var maxIcon_world = $('#world_map .plus');
+  var minIcon_world = $('#world_map .minus');
 
 	$("#cont_txt").text(cont_target);
 		switch(cont_target){
 		case 'Asia':
-			 firstX = 550;
-			 firstY = 30;
-			 firstSetWidth = 440 ;
-			 firstSetHeight= 230; 
+			 firstX_sec = 550;
+			 firstY_sec = 30;
+			 firstSetWidth_sec = 440 ;
+			 firstSetHeight_sec= 230; 
 		break;
 		case 'Africa':
-			 firstX = 350;
-			 firstY = 130;
-			 firstSetWidth = 350 ;
-			 firstSetHeight= 200; 
+			 firstX_sec= 350;
+			 firstY_sec = 130;
+			 firstSetWidth_sec = 350 ;
+			 firstSetHeight_sec= 200; 
 		break;
 		case 'Europe':
-			 firstX = 400;
-			 firstY = 30;
-			 firstSetWidth = 230 ;
-			 firstSetHeight= 90; 
+			 firstX_sec = 400;
+			 firstY_sec = 30;
+			 firstSetWidth_sec = 230 ;
+			 firstSetHeight_sec= 90; 
 		break;
 		case 'North America':
-			 firstX = 0;
-			 firstY = 10;
-			 firstSetWidth = 340 ;
-			 firstSetHeight= 180; 
+			 firstX_sec = 0;
+			 firstY_sec = 10;
+			 firstSetWidth_sec = 340 ;
+			 firstSetHeight_sec= 180; 
 		break;
 		case 'South America':
-			 firstX = 200;
-			 firstY = 180;
-			 firstSetWidth = 180 ;
-			 firstSetHeight= 200; 
+			 firstX_sec = 200;
+			 firstY_sec = 180;
+			 firstSetWidth_sec = 180 ;
+			 firstSetHeight_sec= 200; 
 		break;
 		case 'Australia':
-			 firstX = 760;
-			 firstY = 220;
-			 firstSetWidth = 120 ;
-			 firstSetHeight= 140; 
+			 firstX_sec = 760;
+			 firstY_sec = 220;
+			 firstSetWidth_sec = 120 ;
+			 firstSetHeight_sec= 140; 
 		break;
 		default:
 		break;
 		}
-	r_contenient.canvas.setAttribute("viewBox", firstX+" " + firstY + " "+firstSetWidth +" "+ firstSetHeight);
-	
-  var zoomInterval = 3;
-  var mapRate = firstSetHeight/firstSetWidth;	
+	r_contenient.canvas.setAttribute("viewBox", firstX_sec+" " + firstY_sec + " "+firstSetWidth_sec +" "+ firstSetHeight_sec);
+	//alert(firstX);
   
-	maxIcon.click(function(e) {
-    mapZoom=mapZoom + 0.05;
-
-  //	firstX = firstX + mapZoom *zoomInterval;
-    	firstY = firstY + mapZoom *zoomInterval*mapRate ;
-		if(firstSetWidth > 2*mapZoom*zoomInterval)
-    	firstSetWidth = firstSetWidth - 2*mapZoom*zoomInterval;
-    if(firstSetHeight > 2*mapZoom*zoomInterval * mapRate)
-    	firstSetHeight = firstSetHeight- 2*mapZoom*zoomInterval * mapRate;
-    	r_contenient.canvas.setAttribute("viewBox", firstX+" " + firstY + " "+firstSetWidth +" "+ firstSetHeight);
+  var mapRate = firstSetHeight_sec/firstSetWidth_sec;	
+  	mapZoom=mapZoom + 0.05;
+  	var zoomInterval_cont = 3;
+	maxIcon_world.click(function(e) {
+    
+//		alert(firstX);
+		firstX_sec = firstX_sec + mapZoom *zoomInterval_cont;
+   	firstY_sec = firstY_sec + mapZoom *zoomInterval_cont*mapRate ;
+		if(firstSetWidth_sec > 2*mapZoom*zoomInterval)
+    	firstSetWidth = firstSetWidth - 2*mapZoom*zoomInterval_cont;
+    if(firstSetHeight_sec > 2*mapZoom*zoomInterval_cont * mapRate)
+    	firstSetHeight_sec = firstSetHeight_sec- 2*mapZoom*zoomInterval_cont * mapRate;
+    	r_contenient.canvas.setAttribute("viewBox", firstX_sec+" " + firstY_sec + " "+firstSetWidth_sec +" "+ firstSetHeight_sec);
     e.stopPropagation();
     e.preventDefault();
 	});
 
-	minIcon.click(function(e) {
+	minIcon_world.click(function(e) {
 	   if (mapZoom == 1) return;
 	   	
-//    firstX = firstX - mapZoom *zoomInterval;
-	    firstY = firstY - mapZoom *zoomInterval*mapRate ;
-	   	firstSetWidth = firstSetWidth + 2*mapZoom*zoomInterval;
-	    firstSetHeight = firstSetHeight+ 2*mapZoom*zoomInterval * mapRate;
-			r_contenient.canvas.setAttribute("viewBox", firstX+" " + firstY + " "+firstSetWidth +" "+ firstSetHeight);
+	    firstX_sec = firstX_sec - mapZoom *zoomInterval_cont;
+	    firstY_sec = firstY_sec - mapZoom *zoomInterval_cont*mapRate ;
+	   	firstSetWidth_sec = firstSetWidth_sec + 2*mapZoom*zoomInterval_cont;
+	    firstSetHeight_sec = firstSetHeight_sec+ 2*mapZoom*zoomInterval_cont * mapRate;
+			r_contenient.canvas.setAttribute("viewBox", firstX_sec+" " + firstY_sec + " "+firstSetWidth_sec +" "+ firstSetHeight_sec);
 			mapZoom=mapZoom - 0.05; 
 	    e.stopPropagation();
 	    e.preventDefault();
@@ -387,6 +390,7 @@ function drawContinient(data,cont_target, id) {
 	
 //drawing world map	in contenient_map
 	$("#contenient_map").find('svg').remove();
+	//$("#contenient_map").append();
 	
 	firstX_contenient = 0;
 	firstY_contenient = 40;
@@ -408,7 +412,8 @@ function drawContinient(data,cont_target, id) {
  
 
 	maxIcon_contenient.click(function(e) {
-   //firstX_contenient = firstX_contenient + mapZoom_contenient *zoomInterval;
+
+   	firstX_contenient = firstX_contenient + mapZoom_contenient *zoomInterval;
     firstY_contenient = firstY_contenient + mapZoom_contenient *zoomInterval*mapRate_contenient ;
 		if(firstSetWidth_contenient > 2*mapZoom_contenient*zoomInterval)
     	firstSetWidth_contenient = firstSetWidth_contenient - 2*mapZoom_contenient*zoomInterval;
@@ -425,7 +430,7 @@ function drawContinient(data,cont_target, id) {
 	minIcon_contenient.click(function(e) {
     if (mapZoom_contenient < 1) return;
    	
-   // firstX_contenient = firstX_contenient - mapZoom_contenient *zoomInterval;
+    firstX_contenient = firstX_contenient - mapZoom_contenient *zoomInterval;
     firstY_contenient = firstY_contenient - mapZoom_contenient *zoomInterval*mapRate_contenient ;
    	firstSetWidth_contenient = firstSetWidth_contenient + 2*mapZoom_contenient*zoomInterval;
     firstSetHeight_contenient = firstSetHeight_contenient+ 2*mapZoom_contenient*zoomInterval * mapRate_contenient;
@@ -529,9 +534,9 @@ function drawCountry(data, cont_target,target,shortName, id) {
 	$("#country_map").show();
 	 
 	firstX_world = 0;
-	firstY_world = 90;
-	firstSetWidth_world = 1000;
-	firstSetHeight_world= 200;
+	firstY_world = 40;
+	firstSetWidth_world = 980;
+	firstSetHeight_world= 300;
 	mapWidth_world = 300;
 	mapHeight_world = 200;
 	
@@ -547,6 +552,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
   var mapRate_world = 2/3;
 	
 	maxIcon_world.click(function(e) {
+		alert(firstX_world);
     firstX_world = firstX_world + mapZoom_world *zoomInterval;
 	  firstY_world = firstY_world + mapZoom_world *zoomInterval*mapRate_world ;
 		if(firstSetWidth_world > 2*mapZoom_world*zoomInterval)
@@ -735,17 +741,18 @@ function drawCountry(data, cont_target,target,shortName, id) {
 	var mapZoom_contenient_sec = 1;
   var maxIcon_contenient_sec = $('#contenient_map .plus');
   var minIcon_contenient_sec = $('#contenient_map .minus');
-  var zoomInterval = 3;
+  var zoomInterval_contenient_sec = 3;
   var mapRate_contenient_sec = firstSetHeight_contenient_sec/firstSetWidth_contenient_sec;
  
 
 	maxIcon_contenient_sec.click(function(e) {
-    //firstX_contenient_sec = firstX_contenient_sec + mapZoom_contenient_sec *zoomInterval;
-    firstY_contenient_sec = firstY_contenient_sec + mapZoom_contenient_sec *zoomInterval*mapRate_contenient_sec ;
-    if(firstSetWidth_contenient_sec > 2*mapZoom_contenient_sec*zoomInterval)
-    	firstSetWidth_contenient_sec = firstSetWidth_contenient_sec - 2*mapZoom_contenient_sec*zoomInterval;
-    if(firstSetHeight_contenient_sec > 2*mapZoom_contenient_sec*zoomInterval * mapRate_contenient_sec)
-    	firstSetHeight_contenient_sec = firstSetHeight_contenient_sec- 2*mapZoom_contenient_sec*zoomInterval * mapRate_contenient_sec;
+		
+    firstX_contenient_sec = firstX_contenient_sec + mapZoom_contenient_sec *zoomInterval_contenient_sec;
+    firstY_contenient_sec = firstY_contenient_sec + mapZoom_contenient_sec *zoomInterval_contenient_sec*mapRate_contenient_sec ;
+    if(firstSetWidth_contenient_sec > 2*mapZoom_contenient_sec*zoomInterval_contenient_sec)
+    	firstSetWidth_contenient_sec = firstSetWidth_contenient_sec - 2*mapZoom_contenient_sec*zoomInterval_contenient_sec;
+    if(firstSetHeight_contenient_sec > 2*mapZoom_contenient_sec*zoomInterval_contenient_sec * mapRate_contenient_sec)
+    	firstSetHeight_contenient_sec = firstSetHeight_contenient_sec- 2*mapZoom_contenient_sec*zoomInterval_contenient_sec * mapRate_contenient_sec;
   	r_contenient.canvas.setAttribute("viewBox", firstX_contenient_sec+" " + firstY_contenient_sec + " "+firstSetWidth_contenient_sec+" "+ firstSetHeight_contenient_sec);
 		mapZoom_contenient_sec=mapZoom_contenient_sec + 0.1;
 		
@@ -755,13 +762,13 @@ function drawCountry(data, cont_target,target,shortName, id) {
 
 	minIcon_contenient_sec.click(function(e) {
     if (mapZoom_contenient_sec < 1) return;
-   	firstX_contenient_sec = firstX_contenient_sec - mapZoom_contenient_sec *zoomInterval;
-    firstY_contenient_sec = firstY_contenient_sec - mapZoom_contenient_sec *zoomInterval*mapRate_contenient_sec ;
+   	firstX_contenient_sec = firstX_contenient_sec - mapZoom_contenient_sec *zoomInterval_contenient_sec;
+    firstY_contenient_sec = firstY_contenient_sec - mapZoom_contenient_sec *zoomInterval_contenient_sec*mapRate_contenient_sec ;
     
-   	firstSetWidth_contenient_sec = firstSetWidth_contenient_sec + 2*mapZoom_contenient_sec*zoomInterval;
-    firstSetHeight_contenient_sec = firstSetHeight_contenient_sec + 2*mapZoom_contenient_sec*zoomInterval * mapRate_contenient_sec;
+   	firstSetWidth_contenient_sec = firstSetWidth_contenient_sec + 2*mapZoom_contenient_sec*zoomInterval_contenient_sec;
+    firstSetHeight_contenient_sec = firstSetHeight_contenient_sec + 2*mapZoom_contenient_sec*zoomInterval_contenient_sec * mapRate_contenient_sec;
   	r_contenient.canvas.setAttribute("viewBox", firstX_contenient_sec+" " + firstY_contenient_sec + " "+firstSetWidth_contenient_sec+" "+ firstSetHeight_contenient_sec);
-		mapZoom_contenient=mapZoom_contenient - 0.1; 
+		mapZoom_contenient=mapZoom_contenient_sec - 0.1; 
     e.stopPropagation();
     e.preventDefault();
 });
@@ -842,16 +849,16 @@ function drawCountry(data, cont_target,target,shortName, id) {
 	var mapZoom_country  = 1;
   var maxIcon_country  = $('#world_map .plus');
   var minIcon_country  = $('#world_map .minus');
-  var zoomInterval = 20;
+  var zoomInterval_country = 20;
   var mapRate_country = 3/4;
  
 	maxIcon_country.click(function(e) {
-    firstX_country = firstX_country + mapZoom_country *zoomInterval;
-    firstY_country = firstY_country + mapZoom_country *zoomInterval*mapRate_country ;
+    firstX_country = firstX_country + mapZoom_country *zoomInterval_country;
+    firstY_country = firstY_country + mapZoom_country *zoomInterval_country*mapRate_country ;
 		if(firstSetWidth_country > 2*mapZoom_country*zoomInterval) 
-    	firstSetWidth_country = firstSetWidth_country - 2*mapZoom_country*zoomInterval;
-    if(firstSetHeight_country > 2*mapZoom_country*zoomInterval * mapRate_country) 
-    	firstSetHeight_country = firstSetHeight_country- 2*mapZoom_country*zoomInterval * mapRate_country;
+    	firstSetWidth_country = firstSetWidth_country - 2*mapZoom_country*zoomInterval_country;
+    if(firstSetHeight_country > 2*mapZoom_country*zoomInterval_country * mapRate_country) 
+    	firstSetHeight_country = firstSetHeight_country- 2*mapZoom_country*zoomInterval_country * mapRate_country;
     	r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+firstSetWidth_country+" "+ firstSetHeight_country);
 
 		mapZoom_country=mapZoom_country + 0.1;
@@ -860,12 +867,12 @@ function drawCountry(data, cont_target,target,shortName, id) {
 });
 
 	minIcon_country.click(function(e) {
-    if (mapZoom_world < 1) return;
+    if (mapZoom_country < 1) return;
    	
-    firstX_country = firstX_country - mapZoom_country *zoomInterval;
-    firstY_country = firstY_country - mapZoom_country *zoomInterval*mapRate_country ;
-    firstSetWidth_country = firstSetWidth_country + 2*mapZoom_country*zoomInterval;
-    firstSetHeight_country = firstSetHeight_country + 2*mapZoom_country*zoomInterval * mapRate_country;
+    firstX_country = firstX_country - mapZoom_country *zoomInterval_country;
+    firstY_country = firstY_country - mapZoom_country *zoomInterval_country*mapRate_country ;
+    firstSetWidth_country = firstSetWidth_country + 2*mapZoom_country*zoomInterval_country;
+    firstSetHeight_country = firstSetHeight_country + 2*mapZoom_country*zoomInterval_country * mapRate_country;
     	r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+firstSetWidth_country+" "+ firstSetHeight_country);
 		mapZoom_country=mapZoom_country - 0.1;
     e.stopPropagation();
@@ -993,19 +1000,37 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		}
 		var canvas_width = r_country.canvas.getBBox().width;
 		var canvas_height= r_country.canvas.getBBox().height;
+		
+
 		var canvas_xrate = canvas_width/600;
 		var canvas_yrate = canvas_height/300;
 		if(canvas_width < 600)
 		{
 			firstX_country = -(600-canvas_width)/2;
 			firstSetWidth_country = 600;
-			firstSetHeight_country = 300;
+			if(canvas_height > 300)
+			{
+				
+				firstSetHeight_country = canvas_height+100;
+				}
+			else{
+					firstSetHeight_country = 300;
+				}	
+			
 		}
 		else{
+			//alert(canvas_height);
 			firstX_country = 0;
 			firstSetWidth_country = canvas_width;
-			firstSetHeight_country = canvas_height+100;
-		}
+			if(canvas_height > 300)
+			{
+				
+				firstSetHeight_country = canvas_height+100;
+				}
+			else{
+					firstSetHeight_country = 300;
+				}	
+			}
 		r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+firstSetWidth_country+" "+ firstSetHeight_country);
 		var offset_value = $('#world_map').offset();
 		
