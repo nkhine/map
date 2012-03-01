@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Building an interactive map with Raphael</title>
+
 <link href="css/default.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/raphael.js" type="text/javascript"></script>
@@ -12,10 +12,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		drawMap(paths);
-	});
+	});
 </script>
 </head>
 <body>
+	<div class="tabheader" style="display:none;">
+		<a href="#"><span class="nkhine_map tab">Nkhine Map</span></a>
+		<a href="chat/index.html"><span class="chat tab">Chat</span></a>
+	</div>
+	
   <div class="wrapper">
   	<div id="cont_txt"></div>
     <div id="world_map">
@@ -34,3 +39,9 @@
   <div style="" id="countryinfo" class="countryinfo"></div>
 </body>
 </html>
+
+<!-- chat region -->
+<div class="man1" id="usa_man" ><a href="chat/index.html"><span class="man"></span></a></div>
+<div class="man2" id="russia_man" ><a href="chat/index.html"><span class="man"></span></a></div>
+<div class="man3" id="australia_man" ><a href="chat/index.html"><span class="man"></span></a></div>
+<!-- chat region -->	

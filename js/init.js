@@ -1000,37 +1000,19 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		}
 		var canvas_width = r_country.canvas.getBBox().width;
 		var canvas_height= r_country.canvas.getBBox().height;
-		
-
 		var canvas_xrate = canvas_width/600;
 		var canvas_yrate = canvas_height/300;
 		if(canvas_width < 600)
 		{
 			firstX_country = -(600-canvas_width)/2;
 			firstSetWidth_country = 600;
-			if(canvas_height > 300)
-			{
-				
-				firstSetHeight_country = canvas_height+100;
-				}
-			else{
-					firstSetHeight_country = 300;
-				}	
-			
+			firstSetHeight_country = 300;
 		}
 		else{
-			//alert(canvas_height);
 			firstX_country = 0;
 			firstSetWidth_country = canvas_width;
-			if(canvas_height > 300)
-			{
-				
-				firstSetHeight_country = canvas_height+100;
-				}
-			else{
-					firstSetHeight_country = 300;
-				}	
-			}
+			firstSetHeight_country = canvas_height+100;
+		}
 		r_country.canvas.setAttribute("viewBox", firstX_country+" " + firstY_country + " "+firstSetWidth_country+" "+ firstSetHeight_country);
 		var offset_value = $('#world_map').offset();
 		

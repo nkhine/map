@@ -162,3 +162,90 @@ border:none;
 	stroke: "none";
 opacity: .6
 }
+
+.tab {
+	padding:20px 10px;
+	font-size:18px;
+	cursor:pointer;
+}
+
+.tabheader a:hover {
+	color:blue;
+}
+
+.tabheader a{
+	color:#000;
+	text-decoration:none;
+}
+
+
+.nkhine_map {
+	background:url(../img/gomap.png) no-repeat center left;
+	background-size:30px 30px;
+	height:50px;
+	padding-left:40px;
+  padding-top: 20px;
+}
+
+.chat {
+	background:url(../img/chart.png) no-repeat center left;
+	background-size:30px 30px;
+	height:50px;
+	padding-left:40px;
+  padding-top: 20px;
+}
+
+.nkhine_map:hover {
+	background:url(../img/gomap_hover.png) no-repeat center left;
+	background-size:30px 30px;
+	height:50px;
+	padding-left:40px;
+  padding-top: 20px;
+}
+
+.chat:hover {
+	background:url(../img/chart_hover.png) no-repeat center left;
+	background-size:30px 30px;
+	height:50px;
+	padding-left:40px;
+  padding-top: 20px;
+}
+
+.tabheader {
+	margin:10px;
+	margin-top:20px;	
+}
+
+.man {
+	background:url(../img/man.png) no-repeat;
+	background-size:20px 20px;
+	height:20px;
+	padding-left:20px;
+  padding-top: 10px;
+}
+
+.man:hover {
+	background:url(../img/man_act.png) no-repeat;
+	background-size:20px 20px;
+	height:20px;
+	padding-left:20px;
+  padding-top: 10px;
+}
+
+.man1 {
+		position:relative;
+    left: -500px;
+    margin-top: 105px;
+}
+
+.man2 {
+		position:relative;
+    left: -150px;
+    top: -50px;
+}
+
+.man3 {
+		position:relative;
+    left: -100px;
+    margin-top: 80px;
+}

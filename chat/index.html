@@ -1,0 +1,217 @@
+
+<script src="js/jquery-1.4.4.min.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/tiny_mce.js"></script>
+
+<script src="js/jquery.effects.core.js"></script>
+<script src="js/jquery.effects.slide.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/tabs.css"/>
+
+<div class="file_upload">
+
+<form action="#" method="post" enctype="multipart/form-data">
+<input type="file" name="file" id="file" style="margin:50px;"/>
+<br />
+<input type="submit" name="upload" value="Submit" style="margin:50px;"/>
+<input type="button" name="cancel" value="Cancel" class="file_upload_cancel" />
+</form>
+
+</div>
+
+<div class="tabheader">
+	<a href="../index.html"><span class="nkhine_map tab">Nkhine Map</span></a>
+	<a href="#"><span class="chat tab" style="display:none;" >Chat</span></a>
+</div>
+
+<div class="bottom_banner" style="display:block;">
+<div class="chat_panel_top"></div>
+<div class="chat_panel">
+<div class="panel">
+	&nbsp;
+<!-- panes -->
+<div class="panes">
+
+<div class="pane comment_pane" style="display:block;  min-height:50px;">
+		<h2 class="add_comment" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>
+</div>
+
+<div class="pane" style="min-height:100px;">
+</div>
+
+<div class="pane" style="min-height:100px;">
+</div>
+
+<div class="pane" style="min-height:100px;">
+</div>
+
+<div class="pane" style="min-height:100px;">
+</div>
+
+</div>
+
+<!-- tabs -->
+<ul class="tabs">
+<li><a class="comment" href="#1">comment</a></li>
+<li><a class="files" href="#2">files</a></li>
+<li><a class="email" href="#3">email</a></li>
+<li><a class="event" href="#4">event</a></li>
+<li><a class="map" href="#5">map</a></li>
+<input type="submit" class="post_button" name="save" value="post comment"></input>
+<input type="button"  class="cancel_button" name="reset" value="cancel"></input>
+<span class="option_button">options</span>
+<span class="invite_button">invite</span>
+</form>
+</ul>
+</div>
+</div>
+<div class="chat_panel_bottom"></dir>
+</div>
+
+
+<div class="empty_box">
+	<div class="top_box">
+		<div class="close_box"></div>
+	</div>
+</div>
+
+<script>
+$(".option_button")	.click(function() {
+	$(".empty_box").show("slide", { direction: "right" }, 1000);
+});
+
+$(".invite_button")	.click(function() {
+	$(".empty_box").show("slide", { direction: "right" }, 1000);
+});
+
+$(".file_upload_cancel").click(function() {
+	$(".file_upload").css("display", "none");
+});
+
+$(".close_box").click(function() {
+	$(".empty_box").hide("slide", { direction: "right" }, 1000);
+});
+
+$(".init").focus(function() {
+	
+});
+
+function show_comment() {
+	$(".show_comment").css("display", "none");
+  $(".comment_pane form").css("display", "block");
+	$(".cancel_button").css("display", "block");
+	$(".post_button").css("display", "block");
+	$(".option_button").css("display", "none");
+	$(".invite_button").css("display", "none");
+}
+
+$(".post_button").click(function() {
+	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>'));
+	$(".add_comment").remove();
+	$(".show_comment").css("display", "block");
+	$(".comment_pane form").css("display", "none");
+	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init" ></p>');
+	$(".cancel_button").css("display", "none");
+	$(".post_button").css("display", "none");
+	$(".option_button").css("display", "block");
+	$(".invite_button").css("display", "block");	
+});
+
+$(".add_comment").click(function(){
+	$(".cancel_button").css("display", "block");
+	$(".post_button").css("display", "block");
+	$(".option_button").css("display", "none");
+	$(".invite_button").css("display", "none");
+	$(this).css("display", "none");
+
+
+	
+	var component = $('<form method="post" action="#"><textarea id="elm2" name="elm2" rows="" cols="80" style="width: 100%; border-radius:5px;"><p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init" ></p></textarea>');
+	$(this).after(component);
+	tinyMCE.init({
+			// General options
+	    mode : "textareas",
+	    elements : "elm2",
+	    theme : "advanced",
+      plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	    theme_advanced_buttons1 : "fontselect, fontsizeselect, forecolor, bold, italic, underline, justifyleft,justifycenter,justifyright, bullist, numlist, indent, outdent, link, spellchecker, upload, expand, collapse",
+	    theme_advanced_buttons2 : "",
+	    theme_advanced_buttons3 : "",
+	    theme_advanced_toolbar_location : "top",
+	    theme_advanced_toolbar_align : "right",
+	    theme_advanced_statusbar_location : "bottom",
+	    theme_advanced_resizing : true,
+	    setup : function(ed) {
+	        // Add a custom button
+	        ed.addButton('expand', {
+	            title : 'expand',
+	            image : 'image/expand.png',
+	            onclick : function() {
+	                // Add you own code to execute something on click
+	                $(".mceToolbar").removeClass("mceRight").addClass("mceLeft");               
+	                ed.focus();
+	                $("#elm2_fontselect").css("display", "block");
+	                $("#elm2_fontsizeselect").css("display", "block");      
+	                $("#elm2_forecolor").css("display", "block");
+	                $("#elm2_underline").css("display", "block");
+	                $("#elm2_justifycenter").css("display", "block");
+	                $("#elm2_justifyleft").css("display", "block");
+	                $("#elm2_justifyright").css("display", "block");
+	                $("#elm2_bullist").css("display", "block");
+	                $("#elm2_numlist").css("display", "block");
+	                $("#elm2_outdent").css("display", "block");
+	                $("#elm2_indent").css("display", "block");
+	                $("#elm2_link").css("display", "block");
+	                $("#elm2_expand").css("display", "none");
+	                $("#elm2_collapse").css("display", "block");
+	                $("#elm2_spellchecker").css("display", "block");
+	                $("#elm2_upload").css("margin-right", "10px");
+	            }
+	        });
+	
+	        ed.addButton('collapse', {
+	            title : 'collapse',
+	            image : 'image/collapse.png',
+	            onclick : function() {
+	                // Add you own code to execute something on click
+	                $(".mceToolbar").removeClass("mceLeft").addClass("mceRight");               
+	                ed.focus();
+	                $("#elm2_fontselect").css("display", "none");
+	                $("#elm2_fontsizeselect").css("display", "none");      
+	                $("#elm2_forecolor").css("display", "none");
+	                $("#elm2_underline").css("display", "none");
+	                $("#elm2_justifycenter").css("display", "none");
+	                $("#elm2_justifyleft").css("display", "none");
+	                $("#elm2_justifyright").css("display", "none");
+	                $("#elm2_bullist").css("display", "none");
+	                $("#elm2_numlist").css("display", "none");
+	                $("#elm2_outdent").css("display", "none");
+	                $("#elm2_indent").css("display", "none");
+	                $("#elm2_link").css("display", "none");
+	                $("#elm2_collapse").css("display", "none");
+	                $("#elm2_expand").css("display", "block");
+	                $("#elm2_spellchecker").css("display", "none");
+	                $("#elm2_upload").css("margin-right", "0px");
+	            }
+	        });
+	
+	        ed.addButton('upload', {
+	            title : 'upload',
+	            image : 'image/upload.png',
+	            onclick : function() {
+	                // Add you own code to execute something on click
+	                $(".file_upload").css("display", "block");
+	            }
+	        });        
+	    }
+	});	
+	
+});
+
+$(".tabs").tabs(".pane", {
+onClick: function () {
+console.log(this.getConf(), this.getCurrentPane(), this.getCurrentTab(), this.getIndex(), this.getPanes(), this.getTabs());
+}
+});
+
+</script>
