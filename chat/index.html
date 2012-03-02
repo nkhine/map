@@ -19,13 +19,15 @@
 
 </div>
 
-<div class="tabheader">
+<div class="tabheader" style="display:none;">
 	<a href="../index.html"><span class="nkhine_map tab">Nkhine Map</span></a>
 	<a href="#"><span class="chat tab" style="display:none;" >Chat</span></a>
 </div>
 
 <div class="bottom_banner" style="display:block;">
+	
 <div class="chat_panel_top"></div>
+
 <div class="chat_panel">
 <div class="panel">
 	&nbsp;
@@ -61,13 +63,11 @@
 <input type="button"  class="cancel_button" name="reset" value="cancel"></input>
 <span class="option_button">options</span>
 <span class="invite_button">invite</span>
-</form>
-</ul>
-</div>
-</div>
-<div class="chat_panel_bottom"></dir>
-</div>
+</form></ul></div></div>
 
+<div class="chat_panel_bottom"></dir>
+
+</div>
 
 <div class="empty_box">
 	<div class="top_box">
@@ -92,8 +92,8 @@ $(".close_box").click(function() {
 	$(".empty_box").hide("slide", { direction: "right" }, 1000);
 });
 
-$(".init").focus(function() {
-	
+$(".mceIframeContainer").click(function() {
+	//alert("test");
 });
 
 function show_comment() {
@@ -110,7 +110,19 @@ $(".post_button").click(function() {
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");
-	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init" ></p>');
+	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p>');
+	$(".cancel_button").css("display", "none");
+	$(".post_button").css("display", "none");
+	$(".option_button").css("display", "block");
+	$(".invite_button").css("display", "block");	
+});
+
+$(".cancel_button").click(function() {
+	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>'));
+	$(".add_comment").remove();
+	$(".show_comment").css("display", "block");
+	$(".comment_pane form").css("display", "none");
+	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p>');
 	$(".cancel_button").css("display", "none");
 	$(".post_button").css("display", "none");
 	$(".option_button").css("display", "block");
@@ -126,7 +138,7 @@ $(".add_comment").click(function(){
 
 
 	
-	var component = $('<form method="post" action="#"><textarea id="elm2" name="elm2" rows="" cols="80" style="width: 100%; border-radius:5px;"><p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init" ></p></textarea>');
+	var component = $('<form method="post" action="#"><textarea id="elm2" name="elm2" rows="" cols="80" style="width: 100%; border-radius:5px;"><p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p></textarea>');
 	$(this).after(component);
 	tinyMCE.init({
 			// General options
@@ -166,6 +178,9 @@ $(".add_comment").click(function(){
 	                $("#elm2_collapse").css("display", "block");
 	                $("#elm2_spellchecker").css("display", "block");
 	                $("#elm2_upload").css("margin-right", "10px");
+	                $("#elm2_toolbargroup").css("position", "relative");
+	                $("#elm2_toolbargroup").css("margin-left", "0px");
+	                $("#elm2_toolbargroup").show("slide", { direction: "right" }, 1000);
 	            }
 	        });
 	
@@ -192,6 +207,9 @@ $(".add_comment").click(function(){
 	                $("#elm2_expand").css("display", "block");
 	                $("#elm2_spellchecker").css("display", "none");
 	                $("#elm2_upload").css("margin-right", "0px");
+	                $("#elm2_toolbargroup").css("position", "absolute");
+	                $("#elm2_toolbargroup").css("margin-left", "800px");
+	                $("#elm2_toolbargroup").show("slide", { direction: "left" }, 1000);
 	            }
 	        });
 	
@@ -204,8 +222,10 @@ $(".add_comment").click(function(){
 	            }
 	        });        
 	    }
-	});	
-	
+
+	});
+   
+
 });
 
 $(".tabs").tabs(".pane", {

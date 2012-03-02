@@ -8,6 +8,7 @@ background-color:#CAC9BD;
 .bottom_banner {
 background: url(../image/preview.png) no-repeat left top;
 background-size:100% 125px;
+width: 960px;
 }
 
 .chat_panel_top {
@@ -194,16 +195,16 @@ border-radius: 5px;
 }
 
 .empty_box {
-	border:5px solid #D7D7D7;
+	border:2px solid #D7D7D7;
 	width:400px;
 	height:600px;
 	display:none;
 	background-color:#FFF;
 	border-radius:15px;
 	-moz-border-radius:15px;
-  margin-left: 1000px;
+  float: right;
   position: relative;
-  left: -150px;
+  top: -50px;
 }
 
 .file_upload {
@@ -286,4 +287,18 @@ border-radius: 5px;
 .tabheader {
 	margin:10px;
 	margin-top:20px;	
+}
+
+.mceEditor {
+	width:auto;
+}
+
+#elm2_ifr {
+  max-width: 930px;
+  min-width: 930px;
+}
+
+#elm2_toolbargroup {
+	position:absolute;
+	margin-left:800px;
 }

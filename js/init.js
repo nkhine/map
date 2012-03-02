@@ -90,7 +90,9 @@ minIcon.click(function(e) {
 	var box_arr_cy = new Array();
 	var box_arr_radius = new Array();
 	var box_arr_attr = new Array();
+	var index = 0;
 	for (var country in paths) {
+		index++;
 		var obj = r.path(paths[country].path);
 
   	obj.draggable.enable();
@@ -161,8 +163,10 @@ minIcon.click(function(e) {
 			
 			$("#countryinfo").css({"margin-left": e.pageX-220});
 			$("#countryinfo").css({"margin-top": e.pageY-230});
-			$("#countryinfo").css({"display": "block"});
-			$("#"+this.id).css({"display": "block"});
+			
+			//modify
+			$("#countryinfo").css({"display": "none"});
+			$("#"+this.id).css({"display": "none"});
 
 			var id = this.id; var name = arr[this.id];
 			r.canvas.setAttribute("stroke-width",0);
@@ -181,6 +185,25 @@ minIcon.click(function(e) {
 			exapandContenient(this.id, arr[this.id]);			
 		});
 		
+		if(index == 2) {
+			obj.scale(0.2, 0.2, 50, 50);
+			obj.click(function() {
+				chatWindow = window.open("chat/index.html", "Chat Interface to Map", "location=no, status=no, menubar=no, resizable=no, width=1000, height=750");
+				chatWindow.moveTo(0,0);				
+			});
+		} else if(index == 3) {
+			obj.scale(0.2, 0.2, 520, 270);
+			obj.click(function() {
+				chatWindow = window.open("chat/index.html", "Chat Interface to Map", "location=no, status=no, menubar=no, resizable=no, width=1000, height=750");
+				chatWindow.moveTo(0,0);				
+			});
+		} else if(index == 4) {
+			obj.scale(0.2, 0.2, 400, 100);
+			obj.click(function() {
+				chatWindow = window.open("chat/index.html", "Chat Interface to Map", "location=no, status=no, menubar=no, resizable=no, width=1000, height=750");
+				chatWindow.moveTo(0,0);				
+			});
+		}
 		////////// ongoing testing
 //		.mousedown(function(){
 //				obj.css({'cursor','hand'})
@@ -188,7 +211,6 @@ minIcon.click(function(e) {
 ////////////
 		
 	}
-
 }
 
 ///////  continient draw
@@ -364,8 +386,8 @@ function drawContinient(data,cont_target, id) {
 			
 			$("#countryinfo").css({"margin-left": e.pageX-220});
 			$("#countryinfo").css({"margin-top": e.pageY-430});
-			$("#countryinfo").css({"display": "block"});
-			$("#"+this.id).css({"display": "block"});
+			$("#countryinfo").css({"display": "none"});
+			$("#"+this.id).css({"display": "none"});
 
 			var id = this.id; var name = arr[this.id];
 			
