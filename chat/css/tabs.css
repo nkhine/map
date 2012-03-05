@@ -8,7 +8,7 @@ background-color:#CAC9BD;
 .bottom_banner {
 background: url(../image/preview.png) no-repeat left top;
 background-size:100% 125px;
-width: 960px;
+width: 100%;
 }
 
 .chat_panel_top {
@@ -94,6 +94,8 @@ border-radius: 5px;
 	margin:5px;
 	border: medium none;
 	display:none;
+	position: absolute;
+  right: 220px;
 }
 
 .cancel_button:hover {
@@ -113,6 +115,8 @@ border-radius: 5px;
 		margin:5px;
 		border: medium none;
 		display:none;
+    position: absolute;
+    right: 20px;		
 }
 
 .option_button {
@@ -125,6 +129,8 @@ border-radius: 5px;
 		width:80px;
 		margin:5px;
 		pointer:cursor;
+    position: absolute;
+    right: 20px;		
 }
 
 .invite_button {
@@ -137,6 +143,8 @@ border-radius: 5px;
 		width:80px;
 		margin:5px;
 		pointer:cursor;
+    position: absolute;
+    right: 150px;		
 }
 
 .comment {
@@ -294,11 +302,11 @@ border-radius: 5px;
 }
 
 #elm2_ifr {
-  max-width: 930px;
-  min-width: 930px;
+	min-width:100%;
+	max-width:100%;
 }
 
 #elm2_toolbargroup {
 	position:absolute;
-	margin-left:800px;
+	right:20px;
 }

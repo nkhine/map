@@ -11713,7 +11713,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				allowTransparency : "true",
 				title : s.aria_label,
 				style : {
-					width : '100%',
+					width : '100px',
 					height : h,
 					display : 'block' // Important for Gecko to render the iframe correctly
 				}
