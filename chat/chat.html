@@ -20,12 +20,12 @@
 </form>
 
 </div>
-
+<!--
 <div class="tabheader" style="display:block;">
 	<span class="nkhine_map tab">Nkhine Map</span>
 	<a href="#"><span class="chat tab" style="display:none;" >Chat</span></a>
 </div>
-
+-->
 <div class="bottom_banner" style="display:block;">
 	
 <div class="chat_panel_top"></div>
@@ -80,12 +80,13 @@
 
 <script>
 	
-$(".nkhine_map").click(function() {
+$("#simplemodal-container .nkhine_map").click(function() {
+
 	if(tinyMCE.getInstanceById("elm2") != null)
 	{
 	  tinyMCE.execCommand('mceRemoveControl', true, "elm2");
 	}
-
+	$('.chat_div').close();
 	$(".top_div").load('map.html');
 });
 	
@@ -126,7 +127,7 @@ $(".post_button").click(function() {
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");
-	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p>');
+	tinyMCE.get('elm2').setContent('');
 	$(".cancel_button").css("display", "none");
 	$(".post_button").css("display", "none");
 	$(".option_button").css("display", "block");
@@ -138,7 +139,7 @@ $(".cancel_button").click(function() {
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");
-	tinyMCE.get('elm2').setContent('<p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p>');
+	tinyMCE.get('elm2').setContent('');
 	$(".cancel_button").css("display", "none");
 	$(".post_button").css("display", "none");
 	$(".option_button").css("display", "block");
@@ -154,7 +155,7 @@ $(".add_comment").click(function(){
 
 
 	
-	var component = $('<form class="comment_form" method="post" action="#"><textarea id="elm2" name="elm2" rows="" cols="80" style="width: 100%; border-radius:5px;"><p style="font-family: arial,helvetica,sans-serif; font-size:12px;" class="init_msg" >You type here</p></textarea>');
+	var component = $('<form class="comment_form" method="post" action="#"><textarea id="elm2" name="elm2" rows="" cols="80" style="width: 100%; border-radius:5px;"></textarea>');
 	$(this).after(component);
 	tinyMCE.init({
 			// General options
@@ -238,7 +239,7 @@ $(".add_comment").click(function(){
 					        $('#elm2_ifr').css("max-width", "100%");				          
 				          
 				          $('#elm2_ifr').css("width", "100%");
-				        	$("#elm2_toolbargroup").show("slide", { direction: "right" }, 1000);
+				        	//$("#elm2_toolbargroup").show("slide", { direction: "right" }, 1000);
 	           }
 	        });
 	
@@ -298,7 +299,7 @@ $(".add_comment").click(function(){
 					        $('#elm2_ifr').css("min-width", "100%");
 					        $('#elm2_ifr').css("max-width", "100%");
 					        
-	                $(".expand_toolbar").show("slide", { direction: "left" }, 1000);
+	                //$(".expand_toolbar").show("slide", { direction: "left" }, 1000);
 	            }
 	        });
 	
@@ -313,9 +314,9 @@ $(".add_comment").click(function(){
 	        $('#elm2_ifr').css("width", "95%");
 	        $('#elm2_ifr').css("min-width", "95%");
 	        $('#elm2_ifr').css("max-width", "95%");
+	        
 	    }
 	});
-   
 
 });
 
