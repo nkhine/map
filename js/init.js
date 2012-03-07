@@ -431,11 +431,11 @@ function drawContinient(data,cont_target, id) {
 			});
 			
 			if( paths[country].contenient_name == 'usa' )	{
-				obj.scale(0.05, 0.05, 180, 100);
+				obj.scale(0.03, 0.03, 180, 100);
 			} else if( paths[country].contenient_name == 'russia' ) {
-				obj.scale(0.05, 0.05, 820, 40);
+				obj.scale(0.03, 0.03, 820, 40);
 			} else if( paths[country].contenient_name == 'australia' ) {
-				obj.scale(0.05, 0.05, 880, 300);	
+				obj.scale(0.03, 0.03, 880, 300);	
 			}
 			attributes.fill = '#FFF';			
 		}
@@ -965,11 +965,11 @@ function drawCountry(data, cont_target,target,shortName, id) {
 				overlay();
 		});
 		if( paths[country].contenient_name == 'usa' )	{
-			obj.scale(0.05, 0.05, 180, 100);
+			obj.scale(0.03, 0.03, 180, 100);
 		} else if( paths[country].contenient_name == 'russia' ) {
-			obj.scale(0.05, 0.05, 820, 40);
+			obj.scale(0.03, 0.03, 820, 40);
 		} else if( paths[country].contenient_name == 'australia' ) {
-			obj.scale(0.05, 0.05, 880, 300);				
+			obj.scale(0.03, 0.03, 880, 300);				
 		}
 		attributes.fill = '#FFF';
 	}
@@ -1125,7 +1125,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		}).click(function(){
 			overlay();
 		});
-		obj.scale(0.1, 0.1, 200, 100);
+		obj.scale(0.06, 0.06, 200, 100);
 		attributes.fill = '#FFF';
 		}
 	}
