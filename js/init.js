@@ -78,8 +78,8 @@ minIcon.click(function(e) {
 });
  
 	attributes = {
-            fill: '#fff',
-            stroke: '#3899E6',
+            fill: '#999',
+            stroke: '#4d4d4d',
             'stroke-width': 1,
             'stroke-linejoin': 'round'
         };	
@@ -157,7 +157,7 @@ minIcon.click(function(e) {
 				$(".country").css({"display": "none"});
 	
 				this.animate({
-					fill: '#1669AD'
+					fill: '#FFF'
 				}, 200);
 				
 				$("#countryinfo").css({"margin-left": e.pageX-220});
@@ -188,19 +188,19 @@ minIcon.click(function(e) {
 			bbox = obj.getBBox();
 			set.push(obj);
 	
-			attributes.fill = '#FF0';
+			attributes.fill = '#FFFF99';
 			obj.attr(attributes);
 			arr[obj.id] = country;
 	
 			obj.hover(function(e){	
 				this.animate({
-					fill: '#1669AD'
+					fill: '#FFF'
 				}, 200);
 				var id = this.id; var name = arr[this.id];
 				r.canvas.setAttribute("stroke-width",0);		
 			}, function(){
 				this.animate({
-					fill: '#FF0'
+					fill: '#FFFF99'
 				}, 300);
 				r.canvas.setAttribute("stroke-width",0);
 			}).click(function(){
@@ -214,7 +214,7 @@ minIcon.click(function(e) {
 			} else if( paths[country].contenient_name == 'australia' ) {
 				obj.scale(0.1, 0.1, 920, 300);				
 			}
-			attributes.fill = '#FFF';
+			attributes.fill = '#999';
 		}
 	}
 }
@@ -383,7 +383,7 @@ function drawContinient(data,cont_target, id) {
 			$(".country").css({"display": "none"});
 	
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-220});
@@ -399,7 +399,7 @@ function drawContinient(data,cont_target, id) {
 			});			
 		}, function(){
 			this.animate({
-				fill: attributes.fill
+				fill: '#999'
 			}, 300);
 		}).click(function(){
 			exapandCountry(this.id, arr[this.id]);			
@@ -411,19 +411,19 @@ function drawContinient(data,cont_target, id) {
 			bbox = obj.getBBox();
 			set_contenient.push(obj);
 	
-			attributes.fill = '#FF0';
+			attributes.fill = '#FFFF99';
 			obj.attr(attributes);
 			arr[obj.id] = country;
 	
 			obj.hover(function(e){
 				this.animate({
-					fill: '#1669AD'
+					fill: '#FFF'
 				}, 200);
 				var id = this.id; var name = arr[this.id];
 				r.canvas.setAttribute("stroke-width",0);		
 			}, function(){
 				this.animate({
-					fill: '#FF0'
+					fill: '#FFFF99'
 				}, 300);
 				r.canvas.setAttribute("stroke-width",0);
 			}).click(function(){
@@ -437,7 +437,7 @@ function drawContinient(data,cont_target, id) {
 			} else if( paths[country].contenient_name == 'australia' ) {
 				obj.scale(0.03, 0.03, 880, 300);	
 			}
-			attributes.fill = '#FFF';			
+			attributes.fill = '#999';		
 		}
 	}
 	var offset_value = $('#world_map').offset();
@@ -497,7 +497,9 @@ function drawContinient(data,cont_target, id) {
     e.stopPropagation();
     e.preventDefault();
 	});
-
+	
+	attributes.fill = '#333';
+	
 	for (var country in paths) {
 		if( paths[country].name != 'persion path' ) {										//draw map from continient.world->Mark
 			var obj = r.path(paths[country].path);
@@ -556,7 +558,7 @@ function drawContinient(data,cont_target, id) {
 				$(".country").css({"display": "none"});
 	
 				this.animate({
-					fill: '#1669AD'
+					fill: '#FFF'
 				}, 300);
 				
 				$("#countryinfo").css({"margin-left": e.pageX-220});
@@ -572,7 +574,7 @@ function drawContinient(data,cont_target, id) {
 				});			
 			}, function(){
 				this.animate({
-					fill: attributes.fill
+					fill: '#333'
 				}, 300);
 			}).click(function(){
 				exapandContenient(this.id, arr[this.id]);			
@@ -584,19 +586,19 @@ function drawContinient(data,cont_target, id) {
 			bbox = obj.getBBox();
 			set.push(obj);
 	
-			attributes.fill = '#FF0';
+			attributes.fill = '#FFFF99';
 			obj.attr(attributes);
 			arr[obj.id] = country;
 	
 			obj.hover(function(e){	
 				this.animate({
-					fill: '#1669AD'
+					fill: '#FFF'
 				}, 200);
 				var id = this.id; var name = arr[this.id];
 				r.canvas.setAttribute("stroke-width",0);		
 			}, function(){
 				this.animate({
-					fill: '#FF0'
+					fill: '#FFFF99'
 				}, 300);
 				r.canvas.setAttribute("stroke-width",0);
 			}).click(function(){
@@ -610,7 +612,7 @@ function drawContinient(data,cont_target, id) {
 			} else if( paths[country].contenient_name == 'australia' ) {
 				obj.scale(0.1, 0.1, 920, 300);				
 			}
-			attributes.fill = '#FFF';			
+			attributes.fill = '#999';			
 		}
 		
 	}
@@ -682,6 +684,9 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		var box_arr_attr = new Array();
 		var country_bbox_width = new Array();
 		var country_bbox_height = new Array();
+		
+		attributes.fill = '#333';
+		
 	 for (var country in paths) {
 	 	if( paths[country].name != 'persion path' ) {
 		var obj = r_world.path(paths[country].path);
@@ -742,7 +747,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			$("#countryinfo").css({"display": "none"});
 			$(".country").css({"display": "none"});
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-220});
@@ -758,7 +763,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			});			
 		}, function(){
 			this.animate({
-				fill: attributes.fill
+				fill: '#333'
 			}, 300);
 		}).click(function(){
 			$("#country_map").find('svg').remove();
@@ -772,17 +777,17 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		bbox = obj.getBBox();
 		country_bbox_width[country] = bbox.width;
 		country_bbox_height[country] = bbox.height;
-		attributes.fill = '#FF0';
+		attributes.fill = '#FFFF99';
 		obj.attr(attributes);
 		arr_world[obj.id] = country;
 
 		obj.hover(function(e){
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 		}, function(){
 			this.animate({
-				fill: '#FF0'
+				fill: '#FFFF99'
 			}, 300);
 		}).click(function(){
 			overlay();
@@ -795,7 +800,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		} else if( paths[country].contenient_name == 'australia' ) {
 			obj.scale(0.1, 0.1, 920, 300);
 		}
-		attributes.fill = '#FFF';
+		attributes.fill = '#333';
 		}
 
 	}
@@ -924,7 +929,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			$(".country").css({"display": "none"});
 
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 			
 			$("#countryinfo").css({"margin-left": e.pageX-220});
@@ -940,7 +945,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			});			
 		}, function(){
 			this.animate({
-				fill: attributes.fill
+				fill: '#333'
 			}, 300);
 		}).click(function(){
 			exapandCountry(this.id, arr_country[this.id]);			
@@ -949,17 +954,17 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		var obj = r_contenient.path(paths[country].path);
 		set_contenient.push(obj);
 		obj.draggable.enable();
-		attributes.fill = '#FF0';
+		attributes.fill = '#FFFF99';
 		obj.attr(attributes);
 		arr_country[obj.id] = country;
 		
 		obj.hover(function(e){
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 		}, function(){
 			this.animate({
-				fill: '#FF0'
+				fill: '#FFFF99'
 			}, 300);
 		}).click(function(){
 				overlay();
@@ -971,7 +976,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		} else if( paths[country].contenient_name == 'australia' ) {
 			obj.scale(0.03, 0.03, 880, 300);				
 		}
-		attributes.fill = '#FFF';
+		attributes.fill = '#333';
 	}
 }
 // drawing country in world_map
@@ -1022,8 +1027,8 @@ function drawCountry(data, cont_target,target,shortName, id) {
 	
 		
 	attributes = {
-          fill: '#fff',
-          stroke: '#3899E6',
+          fill: '#999',
+          stroke: '#4d4d4d',		//old-color:#3899E6
           'stroke-width': 1,
           'stroke-linejoin': 'round'
   };
@@ -1087,7 +1092,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			
 			$("#"+id ).css({ "display": "block" });		
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 			
 			$("#" + regions[region].shortName).css({"margin-left": e.pageX-220});
@@ -1102,7 +1107,7 @@ function drawCountry(data, cont_target,target,shortName, id) {
 			});
 		}, function(){
 			this.animate({
-				fill: attributes.fill
+				fill: '#999'
 			}, 300);
 		});
 		} else if ( regions[region].name == 'persion path' ) {
@@ -1111,22 +1116,22 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		obj.draggable.enable();
 		bbox = obj.getBBox();
 		
-		attributes.fill = '#FF0';
+		attributes.fill = '#FFFF99';
 		obj.attr(attributes);
 		arr[obj.id] = region;
 		obj.hover(function(e){
 			this.animate({
-				fill: '#1669AD'
+				fill: '#FFF'
 			}, 300);
 		}, function(){
 			this.animate({
-				fill: '#FF0'
+				fill: '#FFFF99'
 			}, 300);
 		}).click(function(){
 			overlay();
 		});
 		obj.scale(0.06, 0.06, 200, 100);
-		attributes.fill = '#FFF';
+		attributes.fill = '#999';
 		}
 	}
 	var circle_arr = new Array();

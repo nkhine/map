@@ -37,7 +37,7 @@
 <div class="panes">
 
 <div class="pane comment_pane" style="display:block;  min-height:50px;">
-		<h2 class="add_comment" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>
+		<h2 class="add_comment" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; width: 900px;">Add a comment...</h2>
 </div>
 
 <div class="pane" style="min-height:100px;">
@@ -123,7 +123,7 @@ function show_comment() {
 }
 
 $(".post_button").click(function() {
-	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>'));
+	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; width: 900px;">Add a comment...</h2>'));
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");
@@ -135,7 +135,7 @@ $(".post_button").click(function() {
 });
 
 $(".cancel_button").click(function() {
-	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7">Add a comment...</h2>'));
+	$(".add_comment").after($('<h2 class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; width: 900px;">Add a comment...</h2>'));
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");

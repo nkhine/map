@@ -198,7 +198,7 @@
 						g.removeExpression("top");
 						g.removeExpression("left");
 						g.setExpression("top", c);
-						g.setExpression("left", e)
+						g.setExpression("left", e);
 					}
 				}
 			})
@@ -249,10 +249,10 @@
 			var j = a.o.minHeight ? a.getVal(a.o.minHeight, "h") : "auto";
 			c = c ? a.o.autoResize && c > e ? e: c < j ? j: c: h ? h > e ? e: a.o.minHeight && j !== "auto" && h < j ? j: h: j;
 			e = a.o.minWidth ? a.getVal(a.o.minWidth, "w") : "auto";
-			b = b ? a.o.autoResize && b > i ? i: b < e ? e: b: g ? g > i ? i: a.o.minWidth && e !== "auto" && g < e ? e: g: e;
+			b = b ? a.o.autoResize && b > i ? i: b < e ? e: b: g ? g > i ? i: a.o.minWidth && e !== "auto" && g < e ? e: g: E;
 			a.d.container.css({
-				height: c,
-				width: b
+				height: 'auto',
+				width: 'auto'
 			});
 			a.d.wrap.css({
 				overflow: h > c || g > b ? "auto": "visible"
@@ -272,8 +272,8 @@
 				c = c
 			}
 			a.d.container.css({
-				left: c,
-				top: b
+				left: '100px',
+				top: '100px'
 			})
 		},
 		watchTab: function (a) {
