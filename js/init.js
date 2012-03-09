@@ -412,6 +412,7 @@ function drawContinient(data,cont_target, id) {
 			set_contenient.push(obj);
 	
 			attributes.fill = '#FFFF99';
+			attributes['stroke-width'] = 0.2;
 			obj.attr(attributes);
 			arr[obj.id] = country;
 	
@@ -437,7 +438,8 @@ function drawContinient(data,cont_target, id) {
 			} else if( paths[country].contenient_name == 'australia' ) {
 				obj.scale(0.03, 0.03, 880, 300);	
 			}
-			attributes.fill = '#999';		
+			attributes.fill = '#999';
+			attributes['stroke-width'] = 1;
 		}
 	}
 	var offset_value = $('#world_map').offset();

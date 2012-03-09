@@ -1,7 +1,6 @@
 
 
 .bottom_banner {
-background: url(../image/preview.png) no-repeat left top;
 background-size:100% 125px;
 width: 100%;
 }
@@ -256,40 +255,15 @@ border-radius: 5px;
 }
 
 .nkhine_map {
-	background:url(../image/gomap.png) no-repeat center left;
-	background-size:30px 30px;
-	height:50px;
-	padding-left:40px;
-  padding-top: 20px;
-}
-
-.chat {
-	background:url(../image/chart.png) no-repeat center left;
-	background-size:30px 30px;
-	height:50px;
-	padding-left:40px;
-  padding-top: 20px;
-}
-
-.nkhine_map:hover {
-	background:url(../image/gomap_hover.png) no-repeat center left;
-	background-size:30px 30px;
-	height:50px;
-	padding-left:40px;
-  padding-top: 20px;
-}
-
-.chat:hover {
-	background:url(../image/chart_hover.png) no-repeat center left;
-	background-size:30px 30px;
-	height:50px;
-	padding-left:40px;
-  padding-top: 20px;
-}
-
-.tabheader {
-	margin:10px;
-	margin-top:20px;	
+	background:url(../image/close.png) no-repeat center left;
+	background-size:20px 20px;
+	height:20px;
+	width:30px;
+	padding-right:10px;
+  padding-top: 35px;
+  position: relative;
+  float: right;
+  cursor:pointer;
 }
 
 .mceEditor {

@@ -3984,7 +3984,6 @@ tinymce.html.Writer = function(settings) {
 								each(v, function(v, n) {
 									t.setStyle(e, n, v);
 								});
-
 								return;
 							}
 

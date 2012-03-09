@@ -49,7 +49,7 @@
 		autoPosition: true,
 		zIndex: 1E3,
 		close: true,
-		closeHTML: '<div class="tabheader" style="display:block;"><span class="nkhine_map tab">Nkhine Map</span><a href="#"><span class="chat tab" style="display:none;" >Chat</span></a></div>',
+		closeHTML: '<span class="nkhine_map" style="display:block;" ></span>',
 		closeClass: "simplemodal-close",
 		escClose: true,
 		overlayClose: false,
@@ -97,7 +97,7 @@
 			if (b.o.modal && k) b.d.iframe = d('<iframe src="javascript:false;"></iframe>').css(d.extend(b.o.iframeCss, {
 				display: "none",
 				opacity: 0,
-				position: "fixed",
+				position: "absolute",
 				height: f[0],
 				width: f[1],
 				zIndex: b.o.zIndex,
@@ -109,20 +109,20 @@
 				opacity: b.o.opacity / 100,
 				height: b.o.modal ? f[0] : 0,
 				width: b.o.modal ? f[1] : 0,
-				position: "fixed",
+				position: "absolute",
 				left: 0,
 				top: 0,
 				zIndex: b.o.zIndex + 1
 			})).appendTo(b.o.appendTo);
 			b.d.container = d("<div></div>").attr("id", b.o.containerId).addClass("simplemodal-container").css(d.extend(b.o.containerCss, {
 				display: "none",
-				position: "fixed",
+				position: "absolute",
 				zIndex: b.o.zIndex + 2
 			})).append(b.o.close && b.o.closeHTML ? d(b.o.closeHTML).addClass(b.o.closeClass) : "").appendTo(b.o.appendTo);
 			b.d.wrap = d("<div></div>").attr("tabIndex", -1).addClass("simplemodal-wrap").css({
 				height: "100%",
 				outline: 0,
-				width: "100%"
+				width:"100%"
 			}).appendTo(b.d.container);
 			b.d.data = a.attr("id", a.attr("id") || b.o.dataId).addClass("simplemodal-data").css(d.extend(b.o.dataCss, {
 				display: "none"
