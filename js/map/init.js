@@ -970,13 +970,6 @@ function drawCountry(data, cont_target,target,shortName, id) {
 		}).click(function(){
 				overlay();
 		});
-		if( paths[country].contenient_name == 'usa' )	{
-			obj.scale(0.03, 0.03, 180, 100);
-		} else if( paths[country].contenient_name == 'russia' ) {
-			obj.scale(0.03, 0.03, 820, 40);
-		} else if( paths[country].contenient_name == 'australia' ) {
-			obj.scale(0.03, 0.03, 880, 300);				
-		}
 		attributes.fill = '#333';
 	}
 }
@@ -1233,7 +1226,7 @@ function exapandCountry(id, shortName) {
 	}
 	
 function overlay(){
-	
+	alert('overlay...');
 	$('.chat_div').dialog({
 		autoOpen: true,
 		height: 370,
