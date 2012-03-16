@@ -1,24 +1,9 @@
-
-<!--
-<script src="js/jquery.js"></script>
-<script src="js/tabs.js"></script>
-<script src="js/tiny_mce.js"></script>
-
-<script src="js/jquery.effects.core.js"></script>
-<script src="js/jquery.effects.slide.js"></script>
-
-<link rel="stylesheet" type="text/css" href="css/tabs.css"/>
--->
-
 <div class="file_upload">
-
-<form action="#" method="post" enctype="multipart/form-data">
-<input type="file" name="file" id="file" style="margin:50px;"/>
-<br />
-<input type="button" name="upload" value="Submit" class="file_upload_submit" style="margin:50px;"/>
-<input type="button" name="cancel" value="Cancel" class="file_upload_cancel" />
-</form>
-
+	<form action="#" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" id="file" />
+		<input type="button" name="upload" value="Submit" class="file_upload_submit" />
+		<input type="button" name="cancel" value="Cancel" class="file_upload_cancel" />
+	</form>
 </div>
 
 <div class="bottom_banner" style="display:block;">
@@ -26,44 +11,50 @@
 <div class="chat_panel_top"></div>
 
 <div class="chat_panel">
-<div class="panel">
-	&nbsp;
-<!-- panes -->
-<div class="panes">
+	<div class="panel">
+		&nbsp;
+		<!-- panes -->
+		<div class="panes">
 
-<div class="pane comment_pane" style="display:block;  min-height:50px;">
-		<textarea class="add_comment" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; min-width: 580px; border:none;">Add a comment...</textarea>
-</div>
+			<div class="pane comment_pane" style="display:block;  min-height:50px;">
+				<textarea class="add_comment">Add a comment...</textarea>
+			</div>
 
-<div class="pane" style="min-height:100px; min-width:900px;">
-</div>
+			<div class="pane" style="min-height:100px; min-width:900px;">
+			</div>
 
-<div class="pane" style="min-height:100px; min-width:900px;">
-</div>
+			<div class="pane" style="min-height:100px; min-width:900px;">
+			</div>
 
-<div class="pane" style="min-height:100px; min-width:900px;">
-</div>
+			<div class="pane" style="min-height:100px; min-width:900px;">
+			</div>
 
-<div class="pane" style="min-height:100px; min-width:900px;">
-</div>
+			<div class="pane" style="min-height:100px; min-width:900px;">
+			</div>
 
 </div>
 
 <!-- tabs -->
-<ul class="tabs"><div>
-<li><a class="comment" href="chat/chat.html/#1">comment</a></li>
-<li><a class="files" href="chat/chat.html/#2">files</a></li>
-<li><a class="email" href="chat/chat.html/#3">email</a></li>
-<li><a class="event" href="chat/chat.html/#4">event</a></li>
-<li><a class="map" href="chat/chat.html/#5">map</a></li>
-<input type="submit" class="post_button" name="save" value="post comment"></input>
-<input type="button"  class="cancel_button" name="reset" value="cancel"></input>
-<span class="option_button">options</span>
-<span class="invite_button">invite</span>
-</div>
-</form></ul></div></div>
+<ul class="tabs">
+	
+	<div>
+		<li><a class="comment" href="chat/chat.html/#1">comment</a>
+			<form action="" method="post" enctype="multipart/form-data">
+				<input type="submit" class="post_button" name="save" value="post comment"></input>
+				<input type="button"  class="cancel_button" name="reset" value="cancel"></input>
+			</form>		
+		</li>
+		<li><a class="files" href="chat/chat.html/#2">files</a></li>
+		<li><a class="email" href="chat/chat.html/#3">email</a></li>
+		<li><a class="event" href="chat/chat.html/#4">event</a></li>
+		<li><a class="map" href="chat/chat.html/#5">map</a></li>
+		
+		<span class="option_button">options</span>
+		<span class="invite_button">invite</span>
+	</div>
+</ul></div></div>
 
-<div class="chat_panel_bottom"></dir>
+<div class="chat_panel_bottom"></div>
 
 </div>
 
@@ -118,7 +109,7 @@ function show_comment() {
 }
 
 $(".post_button").click(function() {
-	$(".add_comment").after($('<textarea class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; min-width: 580px; border:none;">Add a comment...</textarea>'));
+	$(".add_comment").after($('<textarea class="show_comment" onclick="show_comment()">Add a comment...</textarea>'));
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");
@@ -130,7 +121,7 @@ $(".post_button").click(function() {
 });
 
 $(".cancel_button").click(function() {
-	$(".add_comment").after($('<textarea class="show_comment" onclick="show_comment()" style="font-size: 130%; font-weight: bloder; font-style: italic; color:#D7D7D7; min-width: 580px; border:none;">Add a comment...</textarea>'));
+	$(".add_comment").after($('<textarea class="show_comment" onclick="show_comment()">Add a comment...</textarea>'));
 	$(".add_comment").remove();
 	$(".show_comment").css("display", "block");
 	$(".comment_pane form").css("display", "none");

@@ -1,0 +1,340 @@
+.file_upload {
+    background-color: #FFFFFF;
+    border: 5px solid #D7D7D7;
+    border-radius: 5px 5px 5px 5px;
+    display: none;
+    height: 200px;
+    margin-left: 150px;
+    margin-top: 100px;
+    position: absolute;
+    width: 300px;
+    z-index: 10000;
+}
+
+.file_upload #file {
+	margin:50px;
+}
+
+.file_upload .file_upload_submit {
+	margin:50px;
+}
+
+.chat_panel_top {
+	background:url(image/chat_preview_top.png) no-repeat top left;
+	background-size: 100% 20px;
+	height:20px;
+}
+
+.chat_banner {
+  bottom: 0px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.chat_panel {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("image/chat_preview_middle.png");
+    background-origin: padding-box;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.panel {
+}
+
+#add_comment {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 130%; 
+	font-weight: bloder; 
+	font-style: italic; 
+	color:#D7D7D7; 
+	width:100%;
+	border:none;
+	height:100%;
+}
+
+.comment_pane {
+}
+
+/* tab pane */
+.pane {
+    bottom: 10px;
+    min-height: 100px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.message_button {
+	position:relative;
+}
+
+.message_form{
+    bottom: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.chat_panel_bottom {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("image/chat_preview_bottom.png");
+    background-origin: padding-box;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% 58px;
+    bottom: 0;
+    height: 59px;
+    position: absolute;
+    width: 100%;
+}
+
+.empty_box {
+    background-color: #FFFFFF;
+    border: 2px solid #D7D7D7;
+    border-radius: 15px 15px 15px 15px;
+    display: none;
+    float: right;
+    height: 500px;
+    position: relative;
+    top: 0;
+    width: 400px;
+    z-index: 9999;
+}
+/**********************************************************************************/
+
+
+
+
+
+
+
+
+/* root element for tabs */
+.tabs {
+margin:0 !important;
+height:28px;
+}
+
+/* single tab */
+.tabs li {
+float:left;
+margin:0;
+list-style-type:none;
+}
+
+/* link inside the tab. uses a background image */
+.tabs a {
+float:left;
+display:block;
+padding: 15px 20px 15px 45px;
+text-decoration:none;
+position:relative;
+outline:none;
+text-align:center;
+background-size: 100% 88%;
+color:#000;
+}
+
+.tabs a:hover {
+color:#333;
+}
+
+/* selected tab */
+.tabs a.current {
+border-top:5px solid #FFF;
+color:#000;
+cursor:default;
+top: -5px;
+}
+
+
+
+
+.cancel_button {
+	background:url(image/cancel_button.png) no-repeat;
+	background-size:100% 30px;
+  float: right;
+	height:30px;
+	width:80px;
+	margin:5px;
+	border: medium none;
+	display:none;
+	position: absolute;
+  right: 220px;
+}
+
+.cancel_button:hover {
+  color:orange;	
+}
+
+.post_button:hover {
+  color:green;		
+}
+
+.post_button {
+		background:url(image/post_button.png) no-repeat;
+		background-size:100% 30px;
+    float: right;
+		height:30px;
+		width:180px;
+		margin:5px;
+		border: medium none;
+		display:none;
+    position: absolute;
+    right: 20px;		
+}
+
+.option_button {
+		background:url(image/option.png) no-repeat;
+		background-size:30px 30px;
+    padding-left: 40px;
+    padding-top: 10px;
+    float: right;
+		height:30px;
+		width:80px;
+		margin:5px;
+		pointer:cursor;
+    position: absolute;
+    right: 20px;		
+}
+
+.invite_button {
+		background:url(image/invite.png) no-repeat;
+		background-size:30px 30px;
+	  padding-left: 40px;
+    padding-top: 10px;
+    float: right;
+		height:30px;
+		width:80px;
+		margin:5px;
+		pointer:cursor;
+    position: absolute;
+    right: 150px;		
+}
+
+.comment {
+	background:url(image/comment.png) no-repeat;
+	background-size: 100% 88%;
+	padding-left:20px;
+}
+
+.comment.current {
+	background:url(image/act_comment.png) no-repeat;
+	background-size: 100% 88%;
+}
+
+.files {
+	background:url(image/files.png) no-repeat;
+	background-size: 100% 88%;
+	padding-left:20px;
+}
+
+.files.current {
+	background:url(image/act_files.png) no-repeat;
+	background-size: 100% 88%;
+}
+
+.email {
+	background:url(image/email.png) no-repeat;
+	background-size: 100% 88%;
+	padding-left:20px;
+}
+
+.email.current {
+	background:url(image/act_email.png) no-repeat;
+	background-size: 100% 88%;
+}
+
+.event {
+	background:url(image/event.png) no-repeat;
+	background-size: 100% 88%;
+	padding-left:20px;
+}
+
+.event.current {
+	background:url(image/act_event.png) no-repeat;
+	background-size: 100% 88%;
+}
+
+.map {
+	background:url(image/map.png) no-repeat;
+	background-size: 100% 88%;
+	padding-left:20px;
+}
+
+.map.current {
+	background:url(image/act_map.png) no-repeat;
+	background-size: 100% 88%;
+}
+
+.tab {
+	padding:20px 10px;
+	font-size:18px;
+	cursor:pointer;
+}
+
+.tabheader a:hover {
+	color:blue;
+}
+
+.tabheader a{
+	color:#000;
+	text-decoration:none;
+}
+
+.top_box {
+	background:url(image/post_button.png) no-repeat;
+	background-size:100% 50px;
+	height:50px;
+}
+
+.close_box {
+  margin-left: 350px;
+  margin-top: 10px;
+  position: absolute;
+	background:url(image/closeBtn.png) no-repeat;
+	background-size:30px 30px;
+	width:30px;
+	height:30px;
+}
+
+.nkhine_map {
+	background:url(image/close.png) no-repeat center left;
+	background-size:20px 20px;
+	height:20px;
+	width:30px;
+	padding-right:10px;
+  padding-top: 35px;
+  position: relative;
+  float: right;
+  cursor:pointer;
+}
+
+.mceEditor {
+    bottom: 0px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#elm2_ifr {
+	min-width:380px;
+	min-height:245px;
+}
+
+#elm2_toolbargroup {
+	position:absolute;
+	right:0px;
+}
